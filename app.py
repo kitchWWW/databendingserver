@@ -1,7 +1,7 @@
 import time
 import os
 from flask import Flask, request
-
+import Math
 import bend
 
 from flask_cors import CORS
@@ -21,7 +21,7 @@ def upload_file():
     path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
     file1.save(path)
 
-    filePrefix = "gen/"+str(time.time())    
+    filePrefix = "gen/"+str(Math.round(time.time()*100000))
     bend.doAndSay("convert "+path+"  -resize 1024x1024\!  "+filePrefix+".png")
     bend.imgToAud(filePrefix+".png",filePrefix+".wav")
 
