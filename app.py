@@ -22,7 +22,7 @@ def upload_file():
     file1.save(path)
 
     filePrefix = "gen/"+str(time.time())    
-    doAndSay("convert "+path+"  -resize 1024x1024\!  "+filePrefix+".png")
+    bend.doAndSay("convert "+path+"  -resize 1024x1024\!  "+filePrefix+".png")
     bend.imgToAud(filePrefix+".png",filePrefix+".wav")
 
     return filePrefix
