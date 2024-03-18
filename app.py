@@ -7,7 +7,7 @@ UPLOAD_FOLDER = './uploads'
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         if 'file1' not in request.files:
@@ -28,4 +28,4 @@ def upload_file():
     '''
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="localhost", port=3007, debug=True)
