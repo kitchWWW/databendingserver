@@ -2,6 +2,8 @@ import time
 import os
 from flask import Flask, request
 
+import bend
+
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -16,10 +18,14 @@ def upload_file():
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
-    newFileName = str(time.time())+".png"
     path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
     file1.save(path)
-    return path
+
+    filePrefix = "gen/"+str(time.time())    
+    doAndSay("convert "+path+"  -resize 1024x1024\!  "+filePrefix+".png")
+    bend.imgToAud(filePrefix+".png",filePrefix+".wav")
+
+    return filePrefix
 
 if __name__ == '__main__':
     app.run(host="localhost", port=3007, debug=True)

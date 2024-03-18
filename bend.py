@@ -13,14 +13,8 @@ def doAndSay(com):
 	os.system(com)
 
 def imgToAud(imgName, audName):
-	print(imgName)
-	imgNamePrefix = imgName.split(".")[0]
-	exactName = "exact_"+imgNamePrefix+".png"
-	doAndSay("convert "+imgName+"  -resize 1024x1024\!  "+exactName)
-	
-	img = Image.open(exactName).convert('RGB')
+	img = Image.open(imgName).convert('RGB')
 	# convert it to a matrix
-	
 	vector = np.asarray(img).reshape(shapeAudio)
 	print(vector.dtype)
 	print(vector)
