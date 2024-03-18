@@ -16,7 +16,7 @@ def upload_file():
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
-    newFileName = time.time()+".png"
+    newFileName = str(time.time())+".png"
     path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
     file1.save(path)
     return path
