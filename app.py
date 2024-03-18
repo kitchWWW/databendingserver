@@ -26,7 +26,7 @@ def upload_file():
     path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
     file1.save(path)
 
-    filePrefix = "gen/"+str(round(time.time()*100000,0))
+    filePrefix = "gen/"+ (str(round(time.time()*100000,0)).split(".")[0])
     bend.doAndSay("convert "+path+"  -resize 1024x1024\!  "+filePrefix+".png")
     bend.imgToAud(filePrefix+".png",filePrefix+".wav")
 
