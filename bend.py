@@ -53,5 +53,5 @@ def audToImage(audName, imgName):
 	img2.save(imgName)
 
 # imgToAud("t.png","test1.wav")
-audToImage("test2.wav","test0.png")
+# audToImage("test2.wav","test0.png")
 
