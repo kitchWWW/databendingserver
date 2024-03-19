@@ -71,6 +71,7 @@ body {
 	margin-right: auto;
 }
 .narrowWholeWrapper{
+	font-weight: 300;
 	max-width: 500px;
 	margin-left: auto;
 	margin-right: auto;

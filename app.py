@@ -14,6 +14,11 @@ UPLOAD_AUD_FOLDER = './uploadedAudios'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_IMG_FOLDER
 
+def turnToAcceptableFileName(fn):
+    extension = fn.split(".")[-1]
+    return "tmp_"+(str(round(time.time()*100000,0)).split(".")[0])+extension
+
+
 def keep_recent_files(folder_name, limit=10):
     print("deleting!!",folder_name,limit)
     # Convert to Path object for easier manipulation
@@ -62,12 +67,14 @@ def upload_img():
     file1 = request.files['file1']
     if not allowed_file(file1.filename,["png","jpg","jpeg"]):
         return "wrong file type. must be png or jpg for images"
-    path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
+    path = os.path.join(UPLOAD_IMG_FOLDER, turnToAcceptableFileName(file1.filename))
     file1.save(path)
     fileID = (str(round(time.time()*100000,0)).split(".")[0])
     filePrefix = "gen/"+ fileID
     bend.doAndSay("convert "+path+"  -resize 1024x1024\!  "+filePrefix+".png")
+    print("staring real conversion!")
     bend.imgToAud(filePrefix+".png",filePrefix+".wav")
+    print("cleanup")
     deleteOldStuff()
     return fileID
 
@@ -80,12 +87,14 @@ def upload_aud():
     file1 = request.files['file1']
     if not allowed_file(file1.filename,["wav","mp3"]):
         return "wrong file type. must be mp3 or wav for audio"
-    path = os.path.join(UPLOAD_AUD_FOLDER, file1.filename)
+    path = os.path.join(UPLOAD_AUD_FOLDER, turnToAcceptableFileName(file1.filename))
     file1.save(path)
     fileID = (str(round(time.time()*100000,0)).split(".")[0])
     filePrefix = "gen/"+ fileID
     bend.doAndSay("sox "+path+" "+filePrefix+".wav remix 1")
+    print("staring real conversion!")
     bend.audToImage(filePrefix+".wav",filePrefix+".png")
+    print("cleanup")
     deleteOldStuff()
     return fileID
 
