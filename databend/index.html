@@ -1,5 +1,89 @@
-    <h1>Upload new File</h1>
-    <form method="post" enctype="multipart/form-data" action="https://databend.brianellissound.com/uploadAUD">
-      <input type="file" name="file1">
-      <input type="submit">
-    </form>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Bending Util</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+  <center>
+    <div class="bigTitle">image to audio to image</div>
+  </center>
+
+  <div class="wholeWrapper">
+    <div style="width: 100%;">
+      <div style="width: 50%; height: 500px; float: left;"> 
+        <br>
+        <div class="styleBoxOuter">
+          <div class="styleBoxInnerImg">
+            <center>
+              Result Image
+              <img src="" id="resimg" width="350" height="350">
+            </center>
+          </div>
+        </div>
+      </div>
+      <div style="margin-left: 50%; height: 500px;"> 
+        <br>
+        <div class="styleBoxOuter">
+          <div class="styleBoxInnerAud">
+            <center>
+              Result Audio
+              <br>
+              <audio id="audio" controls="controls">
+                <source id="resaud" src="" type="audio/ogg"></source>
+              </audio>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="wholeWrapper">
+    <div style="width: 100%;">
+      <div style="width: 50%; height: 300px; float: left;"> 
+        <br>
+        <div class="styleBoxOuter">
+          <div class="styleBoxInnerImg">
+            <center>
+              <h1>Upload Image</h1>
+              <form id="form1" method="post" enctype="multipart/form-data">
+                <input id="file1" type="file" name="file1" accept=".png">
+              </form>
+            </center>
+          </div>
+        </div>
+      </div>
+      <div style="margin-left: 50%; height: 300px;"> 
+        <br>
+        <div class="styleBoxOuter">
+          <div class="styleBoxInnerAud">
+            <center>
+              <h1>Upload Audio</h1>
+              <form id="form2" method="post" enctype="multipart/form-data" action="https://databend.brianellissound.com/uploadAUD">
+                <input id="file2" type="file" name="file1" accept=".wav">
+              </form>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="./script.js"></script>
+</html>
+

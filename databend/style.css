@@ -1,0 +1,39 @@
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+	background: #f0f5f6;
+	background-attachment: fixed; /*edit*/
+}
+
+.bigTitle{
+	padding: 50px;
+	font-size: 48px;
+}
+
+.styleBoxOuter{
+	height: 100%;
+	padding: 20px;
+	color:white;
+}
+
+.styleBoxInnerImg{
+	background:#e67e22;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+
+.styleBoxInnerAud{
+	background:#2980b9;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+.wholeWrapper{
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}

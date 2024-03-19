@@ -17,7 +17,6 @@ def allowed_file(filename, options):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in options
 
 
-
 @app.route('/gen/<path:path>')
 def send_report(path):
     return send_from_directory('gen', path)
@@ -30,16 +29,14 @@ def upload_img():
     file1 = request.files['file1']
     if not allowed_file(file1.filename,["png","jpg"]):
         return "wrong file type. must be png or jpg for images"
-
     path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
-    
     file1.save(path)
-
-    filePrefix = "gen/"+ (str(round(time.time()*100000,0)).split(".")[0])
+    fileID = (str(round(time.time()*100000,0)).split(".")[0])
+    filePrefix = "gen/"+ fileID
     bend.doAndSay("convert "+path+"  -resize 1024x1024\!  "+filePrefix+".png")
     bend.imgToAud(filePrefix+".png",filePrefix+".wav")
-
-    return filePrefix
+    
+    return fileID
 
 
 @app.route('/uploadAUD', methods=['POST'])
@@ -51,14 +48,12 @@ def upload_aud():
         return "wrong file type. must be mp3 or wav for audio"
     path = os.path.join(UPLOAD_AUD_FOLDER, file1.filename)
     file1.save(path)
-
-    filePrefix = "gen/"+ (str(round(time.time()*100000,0)).split(".")[0])
+    fileID = (str(round(time.time()*100000,0)).split(".")[0])
+    filePrefix = "gen/"+ fileID
     bend.doAndSay("sox "+path+" "+filePrefix+".wav remix 1")
     bend.audToImage(filePrefix+".wav",filePrefix+".png")
 
-    return filePrefix
-
-
+    return fileID
 
 if __name__ == '__main__':
     app.run(host="localhost", port=3007, debug=True)
