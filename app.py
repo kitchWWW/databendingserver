@@ -56,6 +56,7 @@ def send_report(path):
 
 @app.route('/uploadIMG', methods=['POST'])
 def upload_img():
+    print("upload_img")
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
@@ -73,6 +74,7 @@ def upload_img():
 
 @app.route('/uploadAUD', methods=['POST'])
 def upload_aud():
+    print("upload_aud")
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
