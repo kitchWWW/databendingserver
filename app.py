@@ -29,7 +29,7 @@ def upload_img():
         return 'there is no file1 in form!'
     file1 = request.files['file1']
     if not allowed_file(file1.filename,["png","jpg"]):
-        return "wrong file type"
+        return "wrong file type. must be png or jpg for images"
 
     path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
     
@@ -48,7 +48,7 @@ def upload_aud():
         return 'there is no file1 in form!'
     file1 = request.files['file1']
     if not allowed_file(file1.filename,["wav","mp3"]):
-        return "wrong file type"
+        return "wrong file type. must be mp3 or wav for audio"
     path = os.path.join(UPLOAD_AUD_FOLDER, file1.filename)
     file1.save(path)
 
