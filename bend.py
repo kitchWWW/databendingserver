@@ -29,12 +29,7 @@ def imgToAud(imgName, audName):
 	write(audName, samplerate, newnewv.astype(np.int16))
 
 def audToImage(audName, imgName):
-	print(audName)
-	audNamePrefix = audName.split(".")[0]
-	exactName = "exact_"+audNamePrefix+".wav"
-	doAndSay("sox "+audName+" "+exactName+" remix 1")
-
-	sr, dat = read(exactName)
+	sr, dat = read(audName)
 	print(dat)
 	if(dat.size > singleLenSize):
 		dat = dat[:singleLenSize]
