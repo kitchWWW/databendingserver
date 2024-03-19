@@ -86,6 +86,7 @@ def create_video(uuid):
     bend.doAndSay("convert gen/"+uuid+".png  -resize 512x512\!  gen/"+uuid+"_small.png")
     bend.doAndSay("ffmpeg -loop 1 -i gen/"+uuid+"_small.png -i gen/"+uuid+".wav -shortest gen/"+uuid+"_no_marker.mp4")
     bend.doAndSay("ffmpeg -i gen/"+uuid+"_no_marker.mp4 -i outMarkerSmall.mp4 -filter_complex \"[1]split[m][a];[a]geq='if(gt(lum(X,Y),16),255,0)',hue=s=0[al];[m][al]alphamerge[ovr];[0][ovr]overlay\" gen/"+uuid+".mp4")
+    deleteOldStuff()
     return uuid
 
 

@@ -113,8 +113,14 @@ img{
 }
 
 .loaderSpacer2{
+	min-height: 10px;
+	margin: 10px;
+}
+
+.loaderInfo{
 	min-height: 20px;
 	margin: 10px;
+	display: none;
 }
 
 
@@ -167,7 +173,14 @@ img{
 	cursor: pointer;
 }
 
-.videobtn:hover{
+button:disabled,
+button[disabled]{
+	transition : 200ms;
+		background: #bdc3c7;
+
+}
+
+.videobtn:hover:not([disabled]){
 	transition : 200ms;
 	padding: 7px 30px;
 	transform : translateY(-0px);

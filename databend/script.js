@@ -1,4 +1,18 @@
 
+function dissableAllServerCallButtons(){
+    document.getElementById('videobtn').disabled=true
+    var fields = document.getElementById("form1").getElementsByTagName('*');
+    for(var i = 0; i < fields.length; i++)
+    {
+        fields[i].disabled = true;
+    }
+    var fields = document.getElementById("form2").getElementsByTagName('*');
+    for(var i = 0; i < fields.length; i++)
+    {
+        fields[i].disabled = true;
+    }
+}
+
 function drawWav(audioBuffer, play) {
     const canvas = document.getElementById('waveform');
     const context = canvas.getContext('2d');
@@ -120,7 +134,9 @@ function downloadAud(){
 }
 
 function createVideo(){
-    document.getElementById("loaderThing2").style.display="block"    
+    dissableAllServerCallButtons()
+    document.getElementById("loaderInfo").style.display="block"    
+    document.getElementById("videoLink").href = "https://databend.brianellissound.com/gen/"+params.gid+".mp4"
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://databend.brianellissound.com/createVideo/"+params.gid); 
     xhr.onload = function(event){ 
@@ -139,6 +155,7 @@ document.getElementById("file1").onchange = function() {
     };
     var formData = new FormData(document.getElementById("form1")); 
     xhr.send(formData);
+    dissableAllServerCallButtons()
 };
 
 document.getElementById("file2").onchange = function() {
@@ -151,4 +168,5 @@ document.getElementById("file2").onchange = function() {
     };
     var formData = new FormData(document.getElementById("form2")); 
     xhr.send(formData);
+    dissableAllServerCallButtons()
 };
