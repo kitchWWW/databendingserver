@@ -6,15 +6,16 @@ import PIL
 # RGB mode and size 200x200
 totalNumbFrames = 71*30
 
+oneSideDim = 512
+
 for i in range(totalNumbFrames):
-	im = PIL.Image.new(mode="RGB", size=(1024, 1024))
-	shape = [(0, (i / totalNumbFrames) * 1024), (1024,(i / totalNumbFrames) * 1024)]  
+	im = PIL.Image.new(mode="RGB", size=(oneSideDim, oneSideDim))
+	shape = [(0, (i / totalNumbFrames) * oneSideDim), (oneSideDim,(i / totalNumbFrames) * oneSideDim)]  
 	# create line image 
 	img1 = ImageDraw.Draw(im)   
 	img1.line(shape, fill ="white", width = 3) 
 	# This method will show image in any image viewer
 	im.save("out/"+(str(i).rjust(6, '0'))+".png")
-
 
 """
 
