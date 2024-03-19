@@ -1,20 +1,33 @@
 
 
 body {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
 	background: #f0f5f6;
 	background-attachment: fixed; /*edit*/
 }
 
 .bigTitle{
 	padding: 50px;
-	font-size: 48px;
+	font-size: 58px;
+}
+
+.bigTitleAfter{
+	padding: 10px;
+	font-size: 58px;
 }
 
 .styleBoxOuter{
 	height: 100%;
+	padding-left: 20px;
+	padding-right: 20px;
+	color:white;
+}
+
+
+.styleBoxOuterRes{
+	height: 400px;
 	padding: 20px;
 	color:white;
 }
@@ -24,6 +37,26 @@ body {
 	padding: 20px;
 	border-radius: 20px;
 }
+
+.styleBoxInnerImgRes{
+	border-style: solid;
+	border-color:#e67e22;
+	border-width: 5px;
+	background: #ecf0f1;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+
+.styleBoxInnerAudRes{
+	border-style: solid;
+	border-color:#2980b9;
+	border-width: 5px;
+	background: #ecf0f1;
+	padding: 20px;
+	border-radius: 20px;
+}
+
 
 
 .styleBoxInnerAud{
@@ -36,4 +69,101 @@ body {
 	max-width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
+}
+.narrowWholeWrapper{
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.resultsBounding{
+	max-width: 350px;
+	max-height: 350px;
+	height: 350px;
+}
+
+img{
+	width: 100%;
+	height: 100%;
+}
+
+.medtitle{
+	padding: 0px;
+	font-size: 48px;
+}
+
+.loader {
+	border: 16px solid #bdc3c7; /* Light grey */
+	border-top: 16px solid #8e44ad; /* Blue */
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.loaderSpacer{
+	min-height: 50px;
+}
+
+
+
+
+.audbtn{
+	color: #fff;
+	background: #2980b9;
+	padding: 10px 30px;
+
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 20px;
+
+	border-style: none;
+	border-radius: 50px;
+	transition : 200ms;
+	transform: translateY(0);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+}
+
+.audbtn:hover{
+	transition : 200ms;
+	padding: 10px 50px;
+	transform : translateY(-0px);
+	background: #3498db;
+}
+
+
+.imgbtn{
+
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 20px;
+
+	color: #fff;
+	background: #e67e22;
+	padding: 10px 30px;
+	border-style: none;
+	border-radius: 50px;
+	transition : 200ms;
+	transform: translateY(0);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+}
+
+.imgbtn:hover{
+	transition : 200ms;
+	padding: 10px 50px;
+	transform : translateY(-0px);
+	background: #f39c12;
 }

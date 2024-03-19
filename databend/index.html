@@ -14,43 +14,53 @@
 </head>
 <body>
   <center>
-    <div class="bigTitle">image to audio to image</div>
+    <div id="bigTitle" class="bigTitle">Data Bending Util</div>
   </center>
-
-  <div class="wholeWrapper">
-    <div style="width: 100%;">
-      <div style="width: 50%; height: 500px; float: left;"> 
-        <br>
-        <div class="styleBoxOuter">
-          <div class="styleBoxInnerImg">
-            <center>
-              Result Image
-              <img src="" id="resimg" width="350" height="350">
-            </center>
+  <div  id="resultsArea" style="display:none">
+    <div class="wholeWrapper">
+      <div style="width: 100%;">
+        <div style="width: 50%; height: 550px; float: left;"> 
+          <br>
+          <div class="styleBoxOuterRes">
+            <div class="styleBoxInnerImgRes">
+              <center>
+                <div class="resultsBounding">
+                  <img src="" id="resimg">
+                </div>
+                <br>
+                <button class="imgbtn" onclick="downloadImg()">Download</button>
+              </center>
+            </div>
           </div>
         </div>
-      </div>
-      <div style="margin-left: 50%; height: 500px;"> 
-        <br>
-        <div class="styleBoxOuter">
-          <div class="styleBoxInnerAud">
-            <center>
-              Result Audio
-              <br>
-              <audio id="audio" controls="controls">
-                <source id="resaud" src="" type="audio/ogg"></source>
-              </audio>
-            </center>
+        <div style="margin-left: 50%; height: 550px;"> 
+          <br>
+          <div class="styleBoxOuterRes">
+            <div class="styleBoxInnerAudRes">
+              <center>
+                <div class="resultsBounding">
+                  <canvas id="waveform" width="350" height="350"></canvas>
+                  <audio style="display:none" id="audio" controls="controls">
+                    <source id="resaud" src="" type="audio/ogg"></source>
+                  </audio>
+                </div>
+                  <br>
+                <button class="audbtn" onclick="downloadAud()">Download</button>
+              </center>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <center>
+      <div class="medtitle">Upload again</div>
+    </center>
 
+  </div>
 
   <div class="wholeWrapper">
     <div style="width: 100%;">
-      <div style="width: 50%; height: 300px; float: left;"> 
+      <div style="width: 50%; height: 250px; float: left;"> 
         <br>
         <div class="styleBoxOuter">
           <div class="styleBoxInnerImg">
@@ -63,7 +73,7 @@
           </div>
         </div>
       </div>
-      <div style="margin-left: 50%; height: 300px;"> 
+      <div style="margin-left: 50%; height: 250px;"> 
         <br>
         <div class="styleBoxOuter">
           <div class="styleBoxInnerAud">
@@ -79,9 +89,16 @@
     </div>
   </div>
 
+  <center>
+    <div class="loaderSpacer">
+      <div class="loader" id="loaderThing" style="display:none"></div>
+    </div>
+  </center>
 
+    <div class="narrowWholeWrapper">
 
-
+Here is some helper text about how to use this tool! I hope it comes in handy for you even though no one will ever read this!
+</div>
 
 </body>
 <script type="text/javascript" src="./script.js"></script>
