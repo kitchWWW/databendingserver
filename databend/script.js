@@ -28,7 +28,7 @@ function drawWav(audioBuffer, play) {
         context.lineTo(i, (2 + max) * amp);
     }
     context.stroke();
-    context.fillStyle = '#f0f5f6';
+    context.fillStyle = '#ecf0f1';
     if(play){
         context.moveTo(center+40, center);
         context.lineTo(center-24, center-40);
@@ -119,6 +119,15 @@ function downloadAud(){
     forceDownload("https://databend.brianellissound.com/gen/"+params.gid+".wav", params.gid+".wav")
 }
 
+function createVideo(){
+    document.getElementById("loaderThing2").style.display="block"    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://databend.brianellissound.com/createVideo/"+params.gid); 
+    xhr.onload = function(event){ 
+        window.location.href = "https://databend.brianellissound.com/gen/"+params.gid+".mp4";
+    };
+    xhr.send();
+}
 
 document.getElementById("file1").onchange = function() {
     document.getElementById("loaderThing").style.display="block"

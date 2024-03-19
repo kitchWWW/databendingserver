@@ -41,7 +41,7 @@
                 <div class="resultsBounding">
                   <canvas id="waveform" width="350" height="350"></canvas>
                 </div>
-                  <br>
+                <br>
                 <button class="audbtn" onclick="downloadAud()">Download</button>
               </center>
             </div>
@@ -50,6 +50,12 @@
       </div>
     </div>
     <center>
+      If you like your results, you can <button class="videobtn" onclick="createVideo()">Create Video</button>
+      <br>
+      <div class="loaderSpacer2">
+        <div class="loader" id="loaderThing2" style="display:none"></div>
+      </div>
+
       <div class="medtitle">Upload again</div>
     </center>
 
@@ -92,29 +98,42 @@
     </div>
   </center>
 
-    <div class="narrowWholeWrapper">
-How this works:
-<ul>
-  <li>Images are converted to a square 1024x1024 png, which is then turned into a mono wav file.</li>
-  <li>Audio files are converted first to mono wav files, and then either padded or trimmed to be 71 seconds long, before being converted into a square pngs. </li>
-</ul>
-FAQ:
-<ul>
-  <li>File links are not permanent, please download anything you would like to keep.</li>
-  <li>Conversions should not take more than ~30 seconds. If anything has been running for a long time, it is most likely broken. Refresh and try again.</li>
-  <li>Complete code for this project, including transform functions, can be found <a href="https://github.com/kitchWWW/databendingserver" target="_blank">here</a>.</li>
-</ul>
+  <div class="narrowWholeWrapper">
+    How this works:
+    <ul>
+      <li>Images are converted to a square 1024x1024 png, which is then turned into a mono wav file.</li>
+      <li>Audio files are converted first to mono wav files, and then either padded or trimmed to be 71 seconds long, before being converted into a square pngs. </li>
+    </ul>
 
-If anything is broken, please reach out to me on instagram <a href=" https://www.instagram.com/brianellissound" target="_blank">@brianellissound</a>
+    Sample workflow:
+    <ol>
+      <li>Take a picture</li>
+      <li>upload the picture, download the corresponding audio</li>
+      <li>put the audio into an audio editor of your choice (Ableton, Audacity, etc.) and make some edits, such as applying reverb, compression, normalization, etc.</li>
+      <li>upload the audio, download the corresponding (now chaotic looking) picture </li>
+      <li>put the picture into a photo editor such as Photoshop, gimp, etc. and make some edits, such as cropping, luminosity editing, blur, paint bucket fill, etc.</li>
+      <li>upload the picture, download the corresponding audio (and repeat from step 3!)</li>
+      <li>When you're satisfied, create a video of the output by pressing "create video"</li>
+    </ol>
 
-<br><br>
-<center>
-  <i>
-Made by <a href="https://brianellissound.com/" target="_blank">Brian Ellis</a></i>
-</center>
-</div>
+    FAQ:
+    <ul>
+      <li>File links are not permanent, please download anything you would like to keep.</li>
+      <li>Image and sound conversions should take less than ~30 seconds. If it is taking longer, it is most likely broken. Refresh and try again.</li>
+      <li>Creating videos should take less than 2 minutes. If it is taking longer, it is most likely broken. Refresh and try again.</li>
+      <li>Complete code for this project, including transform functions, can be found <a href="https://github.com/kitchWWW/databendingserver" target="_blank">here</a>.</li>
+    </ul>
 
-</body>
-<script type="text/javascript" src="./script.js"></script>
-</html>
+    If anything is broken, please reach out to me on instagram <a href=" https://www.instagram.com/brianellissound" target="_blank">@brianellissound</a>
+
+    <br><br>
+    <center>
+      <i>
+        Made by <a href="https://brianellissound.com/" target="_blank">Brian Ellis</a></i>
+      </center>
+    </div>
+
+  </body>
+  <script type="text/javascript" src="./script.js"></script>
+  </html>
 

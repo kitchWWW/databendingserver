@@ -112,7 +112,10 @@ img{
 	margin-bottom: 25px;
 }
 
-
+.loaderSpacer2{
+	min-height: 20px;
+	margin: 10px;
+}
 
 
 .audbtn{
@@ -140,6 +143,35 @@ img{
 	padding: 10px 50px;
 	transform : translateY(-0px);
 	background: #3498db;
+}
+
+
+
+
+.videobtn{
+	color: #fff;
+	background: #95a5a6;
+	padding: 7px 15px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 15px;
+
+	border-style: none;
+	border-radius: 50px;
+	transition : 200ms;
+	transform: translateY(0);
+	display: inline;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+}
+
+.videobtn:hover{
+	transition : 200ms;
+	padding: 7px 30px;
+	transform : translateY(-0px);
+	background: #7f8c8d;
 }
 
 
