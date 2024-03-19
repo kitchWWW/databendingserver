@@ -47,7 +47,7 @@ def upload_aud():
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
-    if (not allowed_file(file1.filename,["wav","mp3"])):
+    if not allowed_file(file1.filename,["wav","mp3"]):
         return "wrong file type"
     path = os.path.join(UPLOAD_AUD_FOLDER, file1.filename)
     file1.save(path)
