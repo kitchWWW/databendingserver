@@ -79,7 +79,7 @@ def upload_img():
     return fileID
 
 
-@app.route('/createVideo/<uuid>', methods=['GET'])
+@app.route('/createVideo/<uuid>', methods=['POST'])
 def create_video(uuid):
     print("create_video")
     print(uuid)
