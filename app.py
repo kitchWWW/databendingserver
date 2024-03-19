@@ -20,7 +20,7 @@ def send_report(path):
 
 
 @app.route('/uploadIMG', methods=['POST'])
-def upload_file():
+def upload_img():
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
@@ -35,7 +35,7 @@ def upload_file():
 
 
 @app.route('/uploadAUD', methods=['POST'])
-def upload_file():
+def upload_aud():
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
@@ -45,7 +45,7 @@ def upload_file():
     filePrefix = "gen/"+ (str(round(time.time()*100000,0)).split(".")[0])
     doAndSay("sox "+path+" "+filePrefix+".wav remix 1")
     bend.audToImage(filePrefix+".wav",filePrefix+".png")
-    
+
     return filePrefix
 
 
