@@ -9,6 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 UPLOAD_IMG_FOLDER = './uploadedImages'
+UPLOAD_AUD_FOLDER = './uploadedAudios'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_IMG_FOLDER
 
@@ -31,6 +32,23 @@ def upload_file():
     bend.imgToAud(filePrefix+".png",filePrefix+".wav")
 
     return filePrefix
+
+
+@app.route('/uploadAUD', methods=['POST'])
+def upload_file():
+    if 'file1' not in request.files:
+        return 'there is no file1 in form!'
+    file1 = request.files['file1']
+    path = os.path.join(UPLOAD_AUD_FOLDER, file1.filename)
+    file1.save(path)
+
+    filePrefix = "gen/"+ (str(round(time.time()*100000,0)).split(".")[0])
+    doAndSay("sox "+path+" "+filePrefix+".wav remix 1")
+    bend.audToImage(filePrefix+".wav",filePrefix+".png")
+    
+    return filePrefix
+
+
 
 if __name__ == '__main__':
     app.run(host="localhost", port=3007, debug=True)
