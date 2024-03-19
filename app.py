@@ -27,7 +27,7 @@ def upload_img():
     if 'file1' not in request.files:
         return 'there is no file1 in form!'
     file1 = request.files['file1']
-    if not allowed_file(file1.filename,["png","jpg"]):
+    if not allowed_file(file1.filename,["png","jpg","jpeg"]):
         return "wrong file type. must be png or jpg for images"
     path = os.path.join(UPLOAD_IMG_FOLDER, file1.filename)
     file1.save(path)

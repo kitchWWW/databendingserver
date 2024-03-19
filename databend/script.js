@@ -1,42 +1,77 @@
 
+function drawWav(audioBuffer, play) {
+    const canvas = document.getElementById('waveform');
+    const context = canvas.getContext('2d');
+
+    const channelData = audioBuffer.getChannelData(0); // Get the first channel
+    const width = canvas.width;
+    const height = canvas.height;
+    const step = Math.ceil(channelData.length / width);
+    const center = height / 2
+    const amp = height / 4;
+
+    context.lineWidth = 2;
+    context.strokeStyle = '#2980b9';
+    context.beginPath();
+
+    for (let i = 0; i < width; i++) {
+        let min = 1.0;
+        let max = -1.0;
+        for (let j = 0; j < step; j++) {
+            const datum = channelData[(i * step) + j]; 
+            if (datum < min)
+                min = datum;
+            if (datum > max)
+                max = datum;
+        }
+        context.moveTo(i, (2 + min) * amp);
+        context.lineTo(i, (2 + max) * amp);
+    }
+    context.stroke();
+    context.fillStyle = '#f0f5f6';
+    if(play){
+        context.moveTo(center+40, center);
+        context.lineTo(center-24, center-40);
+        context.lineTo(center-24, center+40);
+        context.fill();
+    }else{
+        context.fillRect(center-24, center-40, 20, 80);
+        context.fillRect(center+4, center-40, 20, 80);
+
+    }
+}
+
+var audioBuffer = null
+
+isPlaying = false
+var can = document.getElementById('waveform');
+can.addEventListener('click', function() {
+    if(isPlaying){
+        isPlaying = false
+        drawWav(audioBuffer, true)
+        audio.pause();
+        audio.currentTime = 0;
+    }else{
+        isPlaying = true
+        drawWav(audioBuffer, false)
+        audio.play()
+    }
+
+}, false);
+
+
 function drawWavform(url){
     const canvas = document.getElementById('waveform');
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const context = canvas.getContext('2d');
     fetch(url)
     .then(response => response.arrayBuffer())
     .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => drawWaveform(audioBuffer))
+    .then(audBuff => {
+        audioBuffer = audBuff
+        drawWav(audioBuffer, true)
+    })
     .catch(e => console.error(e));
-
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-    function drawWaveform(audioBuffer) {
-        const channelData = audioBuffer.getChannelData(0); // Get the first channel
-        const width = canvas.width;
-        const height = canvas.height;
-        const step = Math.ceil(channelData.length / width);
-        // const center = height / 2
-        const amp = height / 4;
-
-        context.lineWidth = 2;
-        context.strokeStyle = '#2980b9';
-        context.beginPath();
-
-        for (let i = 0; i < width; i++) {
-            let min = 1.0;
-            let max = -1.0;
-            for (let j = 0; j < step; j++) {
-                const datum = channelData[(i * step) + j]; 
-                if (datum < min)
-                    min = datum;
-                if (datum > max)
-                    max = datum;
-            }
-            context.moveTo(i, (2 + min) * amp);
-            context.lineTo(i, (2 + max) * amp);
-        }
-        context.stroke();
-    }
 }
 
 
@@ -59,6 +94,7 @@ function forceDownload(url, fileName){
     xhr.send();
 }
 
+var audio = null;
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
@@ -68,7 +104,7 @@ let value = params.gid; // "some_value"
 console.log(value)
 if(params.gid != null){
     document.getElementById("resimg").src = "https://databend.brianellissound.com/gen/"+params.gid+".png"
-    document.getElementById("resaud").src = "https://databend.brianellissound.com/gen/"+params.gid+".wav"
+    audio = new Audio("https://databend.brianellissound.com/gen/"+params.gid+".wav")
     drawWavform("https://databend.brianellissound.com/gen/"+params.gid+".wav")
     document.getElementById("resultsArea").style.display="block"
     document.getElementById("bigTitle").classList.remove("bigTitle");
