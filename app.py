@@ -43,7 +43,7 @@ def upload_aud():
     file1.save(path)
 
     filePrefix = "gen/"+ (str(round(time.time()*100000,0)).split(".")[0])
-    doAndSay("sox "+path+" "+filePrefix+".wav remix 1")
+    bend.doAndSay("sox "+path+" "+filePrefix+".wav remix 1")
     bend.audToImage(filePrefix+".wav",filePrefix+".png")
 
     return filePrefix
