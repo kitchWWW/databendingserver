@@ -14,7 +14,7 @@ UPLOAD_AUD_FOLDER = './uploadedAudios'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_IMG_FOLDER
 
-def keep_recent_files(folder_name, limit=50):
+def keep_recent_files(folder_name, limit=10):
     # Convert to Path object for easier manipulation
     folder_path = Path(folder_name)
     # Check if the folder exists
